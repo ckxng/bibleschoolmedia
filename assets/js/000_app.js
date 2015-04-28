@@ -18,6 +18,10 @@ bsmWebApp.config(
                 templateUrl: 'parts/contact.html',
                 controller: 'ContactCtrl'
             }).
+            when('/test', {
+                templateUrl: 'parts/test.html',
+                controller: 'TestCtrl'
+            }).
             otherwise({
                 redirectTo: '/'
             });

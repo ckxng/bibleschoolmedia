@@ -22,3 +22,11 @@ bsmWebAppControllers.controller('ContactCtrl', [
 
     }
 ]);
+
+bsmWebAppControllers.controller('TestCtrl', [
+    '$scope', '$sails',
+    function ($scope, $sails) {
+        
+
+    }
+]);
