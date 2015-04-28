@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="bsmWebApp">
+  <head>
+    <title>BibleSchool.Media</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+
+  </head>
+
+  <body>
+    
+    <div class="container">
+        
+        <h1>BibleSchool.Media</h1>
+
+        <p>
+            <a href="/">Home</a> |
+            <a href="/contact">Contact Us</a>
+        </p>
+        
+        <div ng-view>
+            
+            <noscript>
+                
+                <h1>JavaScript is Required</h1>
+                
+                <p>Please accept my sincerest apologies, but JavaScript is required
+                for the proper functioning of this website.</p>
+                
+            </noscript>
+            
+        </div>
+    
+    
+    </div>
+    
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.2.26/angular-route.min.js"></script>
+    <script src="//sdk.amazonaws.com/js/aws-sdk-2.0.25.min.js"></script>
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>
