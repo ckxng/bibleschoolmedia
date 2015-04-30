@@ -23,6 +23,10 @@ bsmWebApp.config(
                 templateUrl: 'parts/test.html',
                 controller: 'TestCtrl'
             }).
+            when('/lesson/list', {
+                templateUrl: 'parts/lesson-list.html',
+                controller: 'LessonListCtrl'
+            }).
             otherwise({
                 redirectTo: '/'
             });

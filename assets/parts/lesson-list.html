@@ -1,0 +1,7 @@
+<h2>Choose a Lesson!</h2>
+
+<ul>
+    <li ng-repeat="lesson in lessons">
+        <a href="/#!/lesson/view/{{ lesson.id }}">{{ lesson.name }}</a>
+    </li>
+</ul>

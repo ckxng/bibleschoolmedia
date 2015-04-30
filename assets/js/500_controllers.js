@@ -39,3 +39,20 @@ bsmWebAppControllers.controller('TestCtrl', [
 
     }
 ]);
+
+bsmWebAppControllers.controller('LessonListCtrl', [
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("frontpage");
+        $scope.lessons = [
+            {
+                'id': 1,
+                'name': 'God Made the World'
+            },
+            {
+                'id': 2,
+                'name': 'Jesus Loves the Little Children'
+            }
+        ];
+    }
+]);
