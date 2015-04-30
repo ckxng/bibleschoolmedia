@@ -7,26 +7,35 @@ bsmWebAppControllers.filter('stringify', function(){
     };
 });
 
+bsmWebAppControllers.controller('MainCtrl', [
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        $scope.Page = Page;
+    }
+]);
+
 bsmWebAppControllers.controller('WelcomeCtrl', [
-    '$scope', '$sails',
-    function ($scope, $sails) {
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("frontpage");
         
 
     }
 ]);
 
 bsmWebAppControllers.controller('ContactCtrl', [
-    '$scope', '$sails',
-    function ($scope, $sails) {
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("frontpage");
         
 
     }
 ]);
 
 bsmWebAppControllers.controller('TestCtrl', [
-    '$scope', '$sails',
-    function ($scope, $sails) {
-        
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("test");
 
     }
 ]);

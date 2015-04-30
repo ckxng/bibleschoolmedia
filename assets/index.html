@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="bsmWebApp">
+<html ng-app="bsmWebApp" ng-controller="MainCtrl">
   <head>
     <title>BibleSchool.Media</title>
 
@@ -12,11 +12,12 @@
     
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
 
   </head>
 
-  <body>
+  <body class="{{ Page.style() }}">
     
     <div class="container">
         

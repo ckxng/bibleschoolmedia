@@ -1,7 +1,12 @@
-body{background-image:url(../images/blue-cloud-background.jpg);}
-.container a:link {color: white;text-decoration: none;}
-.container a:visited {color:red;text-decoration: none;}
-.container a:hover {color:pink;text-decoration: none;}
-.container {text-align:center;}
+body.frontpage {background-image:url(../images/blue-cloud-background.jpg);}
+.frontpage .container a:link {color: white;text-decoration: none;}
+.frontpage .container a:visited {color:red;text-decoration: none;}
+.frontpage .container a:hover {color:pink;text-decoration: none;}
+.frontpage .container {text-align:center;}
 
-.top_menu {font-size:150%;}
+.frontpage .top_menu {font-size:150%;}
+
+
+body.test {
+    background-image:url(http://placehold.it/2000/ff0000/000000&text=background);
+}
