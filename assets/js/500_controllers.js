@@ -27,7 +27,7 @@ bsmWebAppControllers.controller('ContactCtrl', [
     '$scope', '$sails', 'Page',
     function ($scope, $sails, Page) {
         Page.setStyle("frontpage");
-        Page.setTitle("ContactUs");
+        Page.setTitle("Contact Us");
 
     }
 ]);
