@@ -7,26 +7,52 @@ bsmWebAppControllers.filter('stringify', function(){
     };
 });
 
+bsmWebAppControllers.controller('MainCtrl', [
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        $scope.Page = Page;
+    }
+]);
+
 bsmWebAppControllers.controller('WelcomeCtrl', [
-    '$scope', '$sails',
-    function ($scope, $sails) {
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("frontpage");
         
 
     }
 ]);
 
 bsmWebAppControllers.controller('ContactCtrl', [
-    '$scope', '$sails',
-    function ($scope, $sails) {
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("frontpage");
         
 
     }
 ]);
 
 bsmWebAppControllers.controller('TestCtrl', [
-    '$scope', '$sails',
-    function ($scope, $sails) {
-        
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("test");
 
+    }
+]);
+
+bsmWebAppControllers.controller('LessonListCtrl', [
+    '$scope', '$sails', 'Page',
+    function ($scope, $sails, Page) {
+        Page.setStyle("frontpage");
+        $scope.lessons = [
+            {
+                'id': 1,
+                'name': 'God Made the World'
+            },
+            {
+                'id': 2,
+                'name': 'Jesus Loves the Little Children'
+            }
+        ];
     }
 ]);

@@ -2,7 +2,8 @@
 var bsmWebApp = angular.module('bsmWebApp', [
     'ngRoute',
     'ngSails',
-    'bsmWebAppControllers'
+    'bsmWebAppControllers',
+    'pageFactory'
 ]);
 
 bsmWebApp.config(
@@ -21,6 +22,10 @@ bsmWebApp.config(
             when('/test', {
                 templateUrl: 'parts/test.html',
                 controller: 'TestCtrl'
+            }).
+            when('/lesson/list', {
+                templateUrl: 'parts/lesson-list.html',
+                controller: 'LessonListCtrl'
             }).
             otherwise({
                 redirectTo: '/'

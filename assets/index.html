@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="bsmWebApp">
+<html ng-app="bsmWebApp" ng-controller="MainCtrl">
 
 <head>
   <title>BibleSchool.Media</title>
@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body class="{{ Page.style() }}">
 
   <div class="container">
     <h1 class="title">BibleSchool.Media</h1>
@@ -39,6 +39,7 @@
           <ul class="nav navbar-nav">
             <li><a href="/#!/">Home</a>
             </li>
+            <li><a href="/#!/lesson/list">Lessons</a></li>
             <li><a href="/#!/contact">Contact</a>
             </li>
           </ul>
