@@ -1,7 +1,19 @@
-body{background-image:url(../images/blue-cloud-background.jpg);}
-.container a:link {color: white;text-decoration: none;}
-.container a:visited {color:red;text-decoration: none;}
-.container a:hover {color:pink;text-decoration: none;}
-.container {text-align:center;}
+body{background-image:url(../images/blue-cloud-background.jpg);background-repeat: no-repeat;background-attachment: fixed;}
+/*body{background-color:#242424;}*/
+/*MENU*/
+.top_menu {font-size:150%;text-align:center;}
+.top_menu a:link {color: white;text-decoration: none;padding:5px;border-radius:10px;border:1px solid #06B6FF;
+    transition:0.5s;transform-style:preserve-3d;position:relative;}
+.top_menu a:visited {color:White;text-decoration: none;}
+.top_menu a:hover {color:white;border:1px solid black;text-decoration:none;transition:0.5s;transform-style:preserve-3d;position:relative;}
 
-.top_menu {font-size:150%;}
+.title {text-align:center;color:black;text-decoration:none; font-size:200%;font-family:Georgia, serif;text-shadow: 0px 0px 10px #F8FCFD;}
+div .text-shadow{text-shadow: 0px 0px 30px #F8FCFD;}
+div .border-shadow{box-shadow: 0px 0px 20px #F8FCFD;}
+div .full_height_container {background-color:#FCFCFC;border-radius:10px;padding:20px;}
+div .opacity {opacity: 0.5;}
+div .lessons-border div {border:1px solid black;/*height:300px;*/}
+/*TEXT FORMATING*/
+.text-center{text-align:center;}
+.txt-bold{font-weight: 900;font-family:Verdana, sans-serif;}
+.text-uppercase{text-transform: uppercase;}
