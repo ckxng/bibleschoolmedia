@@ -18,7 +18,7 @@ bsmWebAppControllers.controller('WelcomeCtrl', [
     '$scope', '$sails', 'Page',
     function ($scope, $sails, Page) {
         Page.setStyle("frontpage");
-        
+        Page.setTitle("Welcome");
 
     }
 ]);
@@ -27,7 +27,7 @@ bsmWebAppControllers.controller('ContactCtrl', [
     '$scope', '$sails', 'Page',
     function ($scope, $sails, Page) {
         Page.setStyle("frontpage");
-        
+        Page.setTitle("ContactUs");
 
     }
 ]);
@@ -36,6 +36,7 @@ bsmWebAppControllers.controller('TestCtrl', [
     '$scope', '$sails', 'Page',
     function ($scope, $sails, Page) {
         Page.setStyle("test");
+        Page.setTitle("Test Page");
 
     }
 ]);
@@ -44,6 +45,7 @@ bsmWebAppControllers.controller('LessonListCtrl', [
     '$scope', '$sails', 'Page',
     function ($scope, $sails, Page) {
         Page.setStyle("frontpage");
+        Page.setTitle("Lesson List");
         $scope.lessons = [
             {
                 'id': 1,
