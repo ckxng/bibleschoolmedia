@@ -1,7 +1,6 @@
 
 var bsmWebApp = angular.module('bsmWebApp', [
     'ngRoute',
-    'ngSails',
     'bsmWebAppControllers',
     'pageFactory'
 ]);

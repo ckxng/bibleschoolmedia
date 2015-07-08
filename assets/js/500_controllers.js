@@ -8,15 +8,15 @@ bsmWebAppControllers.filter('stringify', function(){
 });
 
 bsmWebAppControllers.controller('MainCtrl', [
-    '$scope', '$sails', 'Page',
-    function ($scope, $sails, Page) {
+    '$scope', 'Page',
+    function ($scope, Page) {
         $scope.Page = Page;
     }
 ]);
 
 bsmWebAppControllers.controller('WelcomeCtrl', [
-    '$scope', '$sails', 'Page',
-    function ($scope, $sails, Page) {
+    '$scope', 'Page',
+    function ($scope, Page) {
         Page.setStyle("frontpage");
         Page.setTitle("Welcome");
 
@@ -24,8 +24,8 @@ bsmWebAppControllers.controller('WelcomeCtrl', [
 ]);
 
 bsmWebAppControllers.controller('ContactCtrl', [
-    '$scope', '$sails', 'Page',
-    function ($scope, $sails, Page) {
+    '$scope', 'Page',
+    function ($scope, Page) {
         Page.setStyle("frontpage");
         Page.setTitle("Contact Us");
 
@@ -33,8 +33,8 @@ bsmWebAppControllers.controller('ContactCtrl', [
 ]);
 
 bsmWebAppControllers.controller('TestCtrl', [
-    '$scope', '$sails', 'Page',
-    function ($scope, $sails, Page) {
+    '$scope', 'Page',
+    function ($scope, Page) {
         Page.setStyle("test");
         Page.setTitle("Test Page");
 
@@ -42,8 +42,8 @@ bsmWebAppControllers.controller('TestCtrl', [
 ]);
 
 bsmWebAppControllers.controller('LessonListCtrl', [
-    '$scope', '$sails', 'Page',
-    function ($scope, $sails, Page) {
+    '$scope', 'Page',
+    function ($scope, Page) {
         Page.setStyle("frontpage");
         Page.setTitle("Lesson List");
         $scope.lessons = [
