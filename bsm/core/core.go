@@ -9,9 +9,9 @@ import (
 
 func Init() {
     router := mux.NewRouter().StrictSlash(false)
-    router.PathPrefix("/").Handler(http.FileServer(http.Dir("./assets/")))
-    router.HandleFunc("/", handler)
+    router.HandleFunc("/hello", handler)
     // add controller routes
+    router.PathPrefix("/").Handler(http.FileServer(http.Dir("./assets/")))
 
     stack := negroni.New()
     // add middleware
