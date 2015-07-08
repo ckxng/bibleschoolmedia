@@ -1,4 +1,8 @@
 #!/bin/bash
+
+source config/google-deploy.default.txt
+
+ls config/google-deploy.txt >/dev/null 2>&1 && \
 source config/google-deploy.txt
 
 if [ "$APPID" == "sample" ]; then

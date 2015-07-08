@@ -1,0 +1,3 @@
+# Copy this file to google-deploy.txt and make changes below.
+
+APPID="sample"
