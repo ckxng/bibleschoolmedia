@@ -1,3 +1,48 @@
+
+/**
+ ** default styles
+ **/
+.slide-page-nav {
+    visibility: hidden;
+    display: none;
+}
+
+
+.top_menu {
+    visibility: visible;
+    display: inline;
+}
+
+.title {
+    visibility: visible;
+    display: inline;
+}
+
+.navbar {
+    visibility: visible;
+    display: inline;
+}
+
+.nav {
+    visibility: visible;
+    display: inline;
+}
+.navbar-nav {
+    visibility: visible;
+    display: inline;
+}
+
+.slide .navbar-form {
+    visibility: visible;
+    display: inline;
+}
+
+.navbar-collapse {
+    visibility: visible;
+    display: inline;
+}
+
+
 /**
  ** .frontpage styles
  **/
@@ -74,6 +119,106 @@ body.frontpage {
 .frontpage .text-uppercase {
     text-transform: uppercase;
 }
+
+
+/**
+ ** .slide styles
+ **/
+
+body.slide {
+    background-color: black;
+}
+
+/*MENU*/
+
+.slide .top_menu {
+    visibility: hidden;
+    display: none;
+}
+
+.slide .title {
+    visibility: hidden;
+    display: none;
+}
+
+.slide .navbar {
+    visibility: hidden;
+    display: none;
+}
+
+.slide .nav {
+    visibility: hidden;
+    display: none;
+}
+.slide .navbar-nav {
+    visibility: hidden;
+    display: none;
+}
+
+.slide .navbar-form {
+    visibility: hidden;
+    display: none;
+}
+
+.slide .navbar-collapse {
+    visibility: hidden;
+    display: none;
+}
+
+.slide .slide-page-nav {
+    visibility: visible;
+    display: inline;
+}
+
+.slide .slide-page-nav .glyphicon {
+    color: red;
+    font-size: 3.0em;
+}
+
+.slide .slide-page-nav .row {
+    text-align: center;
+}
+
+.slide div .text-shadow {
+    text-shadow: 0px 0px 30px #F8FCFD;
+}
+.slide div .border-shadow {
+    box-shadow: 0px 0px 20px #F8FCFD;
+}
+.slide div .full_height_container {
+    background-color: #FCFCFC;
+    border-radius: 10px;
+    padding: 20px;
+}
+.slide div .opacity {
+    opacity: 0.5;
+}
+.slide div .lessons-border div {
+    border: 1px solid black;
+    /*height:300px;*/
+}
+/*TEXT FORMATING*/
+
+.slide .text-center {
+    text-align: center;
+}
+.slide .txt-bold {
+    font-weight: 900;
+    font-family: Verdana, sans-serif;
+}
+.slide .text-uppercase {
+    text-transform: uppercase;
+}
+
+.slide .slide-image img {
+    max-width: 100%;
+}
+
+.slide .page-title {
+    visibility: hidden;
+    display: none;
+}
+
 
 
 

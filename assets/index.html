@@ -20,6 +20,7 @@
 <body class="{{ Page.style() }}">
 
   <div class="container">
+    
     <h1 class="title">BibleSchool.Media</h1>
     <!--MAIN NAV MENU-->
     <nav class="navbar navbar-default border-shadow">
@@ -55,9 +56,21 @@
       <!-- /.container-fluid -->
     </nav>
     <!--MAIN NAV MENU END-->
+    
+
+    <div class="slide-page-nav">
+      <p>&nbsp;</p>
+    </div>
+    
     <div class="border-shadow full_height_container">
-      <h2>{{ Page.title() }}</h2>
-      <hr/>
+      
+      <div class="page-title">
+        <h2>{{ Page.title() }}</h2>
+        <hr/>
+      </div>
+      
+      
+      
       <div ng-view>
         <noscript>
 
@@ -68,6 +81,7 @@
         </noscript>
 
       </div>
+
 
 
     </div>
@@ -94,6 +108,7 @@
   <!--SCRIPTS-->
   <script src="/js/000_app.js"></script>
   <script src="/js/400_pageFactory.js"></script>
+  <script src="/js/401_slideNavFactory.js"></script>
   <script src="/js/500_controllers.js"></script>
   <!--SCRIPTS END-->
 </body>

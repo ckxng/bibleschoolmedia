@@ -2,7 +2,8 @@
 var bsmWebApp = angular.module('bsmWebApp', [
     'ngRoute',
     'bsmWebAppControllers',
-    'pageFactory'
+    'pageFactory',
+    'slideNavFactory'
 ]);
 
 bsmWebApp.config(
@@ -25,6 +26,18 @@ bsmWebApp.config(
             when('/lesson/list', {
                 templateUrl: 'parts/lesson-list.html',
                 controller: 'LessonListCtrl'
+            }).
+            when('/slide/title/:id', {
+                templateUrl: 'parts/slide-title.html',
+                controller: 'SlideTitleCtrl'
+            }).
+            when('/slide/image/:id', {
+                templateUrl: 'parts/slide-image.html',
+                controller: 'SlideImageCtrl'
+            }).
+            when('/slide/narration/:id', {
+                templateUrl: 'parts/slide-narration.html',
+                controller: 'SlideNarrationCtrl'
             }).
             otherwise({
                 redirectTo: '/'
