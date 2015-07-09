@@ -2,11 +2,6 @@
 /**
  ** default styles
  **/
-.slide-page-nav {
-    visibility: hidden;
-    display: none;
-}
-
 
 .top_menu {
     visibility: visible;
@@ -164,12 +159,6 @@ body.slide {
     visibility: hidden;
     display: none;
 }
-
-.slide .slide-page-nav {
-    visibility: visible;
-    display: inline;
-}
-
 .slide .slide-page-nav .glyphicon {
     color: red;
     font-size: 3.0em;

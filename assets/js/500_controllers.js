@@ -93,7 +93,7 @@ bsmWebAppControllers.controller('SlideTitleCtrl', [
         Page.setStyle("slide");
         Page.setTitle("Sample Title Slide");
         
-        $scope.prev = "/#!/lessons/list";
+        $scope.prev = "/#!/lesson/list";
         $scope.next = "/#!/slide/narration/1";
 
         $scope.id = $routeParams.id;
@@ -107,7 +107,7 @@ bsmWebAppControllers.controller('SlideImageCtrl', [
         Page.setTitle("Sample Image Slide");
         
         $scope.prev = "/#!/slide/narration/1";
-        $scope.next = "/#!/lessons/list";
+        $scope.next = "/#!/lesson/list";
 
         $scope.id = $routeParams.id;
     }
