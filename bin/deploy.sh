@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source config/google-deploy.default.txt
+source config/google-deploy.txt.default
 
 ls config/google-deploy.txt >/dev/null 2>&1 && \
 source config/google-deploy.txt

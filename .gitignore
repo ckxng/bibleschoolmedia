@@ -18,6 +18,7 @@
 ################################################
 
 config/google-deploy.txt
+config/google-local.txt
 
 github.com
 
