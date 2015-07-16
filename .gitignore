@@ -17,9 +17,15 @@
 # to fit your needs!
 ################################################
 
+# config
 config/google-deploy.txt
 config/google-local.txt
 
+# binary output
+main
+
+# dependencies
 github.com
 
+# workspace
 .c9
