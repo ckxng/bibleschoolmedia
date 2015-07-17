@@ -5,6 +5,7 @@ import (
     "math/rand"
 )
 
+// returns a LessonIndex of all available lessons
 func List(w http.ResponseWriter, r *http.Request) (interface{}, error) {
     return LessonIndex {
         LessonListing {

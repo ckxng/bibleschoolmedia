@@ -7,6 +7,7 @@ import (
     "bsm/api/character"
 )
 
+// create a new narration slide with a randomly set id
 func NewNarrationSlide(name string, narrator character.Character, text string) NarrationSlide {
     ns := NarrationSlide {
         id: rand.Int(),
@@ -26,18 +27,22 @@ type NarrationSlide struct {
     data        map[string]interface{}      `json:"data"`
 }
 
+// get the Id
 func (ns NarrationSlide) Id() int {
     return ns.id
 }
  
+// get the Name
 func (ns NarrationSlide) Name() string {
     return ns.name
 }
 
+// get the Type
 func (ns NarrationSlide) Type() string {
     return ns.myType
 }
 
+// get the Narrator
 func (ns NarrationSlide) Narrarator() (character.Character, bool) {
     if val, ok := ns.data["narrator"]; ok {
         if narrator, ok := val.(character.Character); ok {
@@ -47,6 +52,7 @@ func (ns NarrationSlide) Narrarator() (character.Character, bool) {
     return character.Character{}, false
 }
 
+// get the Text
 func (ns NarrationSlide) Text() (string, bool) {
     if val, ok := ns.data["text"]; ok {
         if text, ok := val.(string); ok {
@@ -56,6 +62,9 @@ func (ns NarrationSlide) Text() (string, bool) {
     return "", false
 }
 
+// json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
+// data:map[string]interface{} {narrator:bsm.api.character.Character, 
+// text:string}} 
 func (ns NarrationSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
         Id          int                         `json:"id"`

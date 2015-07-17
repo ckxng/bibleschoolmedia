@@ -6,6 +6,7 @@ import (
     "math/rand"
 )
 
+// create a new title slide with a randomly generated id
 func NewTitleSlide(name string, title string, subtitle string) TitleSlide {
     ts := TitleSlide {
         id: rand.Int(),
@@ -26,18 +27,22 @@ type TitleSlide struct {
     Test        string                      `json:"test"`
 }
 
+// get the Id
 func (ts TitleSlide) Id() int {
     return ts.id
 }
 
+// get the Name
 func (ts TitleSlide) Name() string {
     return ts.name
 }
 
+// get the Type
 func (ts TitleSlide) Type() string {
     return ts.myType
 }
 
+// get the Title
 func (ts TitleSlide) Title() (string, bool) {
     if val, ok := ts.data["title"]; ok {
         if title, ok := val.(string); ok {
@@ -47,6 +52,7 @@ func (ts TitleSlide) Title() (string, bool) {
     return "", false
 }
 
+// get the Subtitle
 func (ts TitleSlide) Subtitle() (string, bool) {
     if val, ok := ts.data["subtitle"]; ok {
         if subtitle, ok := val.(string); ok {
@@ -56,6 +62,8 @@ func (ts TitleSlide) Subtitle() (string, bool) {
     return "", false
 }
 
+// json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
+// data:map[string]interface{} {title:string, subtitle:string}} 
 func (ts TitleSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
         Id          int                         `json:"id"`

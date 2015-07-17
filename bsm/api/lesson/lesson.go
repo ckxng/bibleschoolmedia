@@ -1,9 +1,12 @@
+// provides the types and api methods required to serve lesson data throughout
+// the application
 package lesson
 
 import (
     "bsm/api/slide"
 )
 
+// a simple listing of lessons consisting only of an Id and Name
 type LessonListing struct {
     Id      int     `json:"id"`
     Name    string  `json:"name"`
@@ -11,6 +14,7 @@ type LessonListing struct {
 
 type LessonIndex []LessonListing
 
+// a fully specified lesson including the slide deck
 type Lesson struct {
     Id      int             `json:"id"`
     Name    string          `json:"name"`

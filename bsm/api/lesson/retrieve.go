@@ -9,6 +9,11 @@ import (
     "bsm/api/character"
 )
 
+// returns a fully specified Lesson including the deck of Slides
+//
+// Error: "Missing ID" if the http.Request does not have an "id" Var
+//
+// Error: "Non-numeric ID" if the ID is not fully numeric
 func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
     id, ok := mux.Vars(r)["id"]
     if !ok || id == "" {

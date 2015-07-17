@@ -1,3 +1,5 @@
+// initializes the application and provides Init(), which
+// can be called by either appengine or main to configure the web server
 package core
 
 import (
@@ -10,8 +12,11 @@ import (
     "bsm/api/slide"
 )
 
+// a specialized version of http.HandlerFunc that returns (interface{}, error)
+// and is intended to be wrapped by JSONDecorator
 type JSONHandlerFunc func(http.ResponseWriter, *http.Request) (interface{}, error)
 
+// initializes the web server and configure routes
 func Init() {
     router := mux.NewRouter().StrictSlash(false)
     router.HandleFunc("/hello", handler)
@@ -28,6 +33,8 @@ func Init() {
     http.Handle("/", stack)
 }
 
+// wraps JSONHanderFunc functions and provide JSON Content-type, marshaling,
+// and HTTP error code functionality
 func JSONDecorator(handler JSONHandlerFunc) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
         data, err := handler(w,r)
@@ -57,6 +64,7 @@ func JSONDecorator(handler JSONHandlerFunc) http.HandlerFunc {
     }
 }
 
+// a simple test function independant of all other app capabilities
 func handler(w http.ResponseWriter, r *http.Request) {
     fmt.Fprint(w, "Hello, world!")
 }
