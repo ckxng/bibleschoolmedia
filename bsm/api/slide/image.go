@@ -38,7 +38,7 @@ func (is ImageSlide) Name() string {
     return is.name
 }
 
-// get t6he Type
+// get the Type
 func (is ImageSlide) Type() string {
     return is.myType
 }
