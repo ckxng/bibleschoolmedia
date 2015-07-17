@@ -23,9 +23,10 @@ config/google-local.txt
 
 # binary output
 main
+pkg
 
 # dependencies
-github.com
+src/github.com
 
 # workspace
 .c9

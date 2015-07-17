@@ -1,6 +1,6 @@
 // +build appengine
 
-package bsm
+package main
 
 import (
     "bsm/core"
