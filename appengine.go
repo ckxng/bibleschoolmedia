@@ -3,9 +3,9 @@
 package main
 
 import (
-    "bsm/core"
+    "bsm"
 )
 
 func init() {
-    core.Init()
+    bsm.Init()
 }

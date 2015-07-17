@@ -4,10 +4,10 @@ package main
 
 import (
     "net/http"
-    "bsm/core"
+    "bsm"
 )
 
 func main() {
-    core.Init()
+    bsm.Init()
     http.ListenAndServe("0.0.0.0:8080", nil)        
 }

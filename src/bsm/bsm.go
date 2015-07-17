@@ -1,6 +1,6 @@
 // initializes the application and provides Init(), which
 // can be called by either appengine or main to configure the web server
-package core
+package bsm
 
 import (
     "fmt"
