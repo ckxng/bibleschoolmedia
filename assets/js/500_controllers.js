@@ -48,12 +48,13 @@ bsmWebAppControllers.controller('LessonListCtrl', [
         Page.setTitle("Lesson List");
         $http.get('/api/v1/lesson').
             success(function(data, status, headers, config) {
-                $scope.lessons = data;
+                $scope.lessons = data.data;
+                $scope.err = data.err;
                 
-                var len = $scope.lessons.data.length;
+                var len = $scope.lessons.length;
                 for(var i = 0; i < len; i++) {
-                    $scope.lessons.data[i].firstSlide = bsmWebAppControllers.slideToUrl(
-                        $scope.lessons.data[i].id,
+                    $scope.lessons[i].firstSlide = bsmWebAppControllers.slideToUrl(
+                        $scope.lessons[i].id,
                         0,
                         "slide.TitleSlide");
                 }
@@ -84,22 +85,22 @@ bsmWebAppControllers.slideToUrl = function(lessonid, seqno, slidetype) {
 }
 
 bsmWebAppControllers.updateLessonNav = function($scope, curseqno) {
-    var len = $scope.lesson.data.slides.length;
+    var len = $scope.lesson.slides.length;
     if(curseqno == 0) {
         $scope.prev = "/#!/lesson/list";
     } else {
         $scope.prev = bsmWebAppControllers.slideToUrl(
-            $scope.lesson.data.id,
+            $scope.lesson.id,
             parseInt(curseqno)-1,
-            $scope.lesson.data.slides[parseInt(curseqno)-1].myType);
+            $scope.lesson.slides[parseInt(curseqno)-1].myType);
     }
     if(curseqno == len-1) {
         $scope.next = "/#!/lesson/list";
     } else {
         $scope.next = bsmWebAppControllers.slideToUrl(
-            $scope.lesson.data.id,
+            $scope.lesson.id,
             parseInt(curseqno)+1,
-            $scope.lesson.data.slides[parseInt(curseqno)+1].myType);
+            $scope.lesson.slides[parseInt(curseqno)+1].myType);
     }
 }
 
@@ -109,21 +110,14 @@ bsmWebAppControllers.controller('SlideTitleCtrl', [
         Page.setStyle("slide");
         Page.setTitle("Sample Title Slide");
         
-        var lesson = null;
         $http.get('/api/v1/lesson/'+$routeParams.lessonid).
             success(function(data, status, headers, config) {
-                $scope.lesson = data;
+                $scope.lesson = data.data;
+                $scope.err = data.err;
                 
-                $http.get('/api/v1/slide/'+$scope.lesson.data.slides[$routeParams.seqno].id).
-                    success(function(data, status, headers, config) {
-                        $scope.slide = data;
-                        
-                        bsmWebAppControllers.updateLessonNav($scope, $routeParams.seqno);
-                    }).error(function(data, status, headers, config) {
-                        // handle error
-                    });
-                
-        
+                $scope.slide = data.data.slides[$routeParams.seqno];
+                bsmWebAppControllers.updateLessonNav($scope, $routeParams.seqno);
+
             }).error(function(data, status, headers, config) {
                 // handle error
             });
@@ -137,21 +131,14 @@ bsmWebAppControllers.controller('SlideImageCtrl', [
         Page.setStyle("slide");
         Page.setTitle("Sample Image Slide");
         
-        var lesson = null;
         $http.get('/api/v1/lesson/'+$routeParams.lessonid).
             success(function(data, status, headers, config) {
-                $scope.lesson = data;
+                $scope.lesson = data.data;
+                $scope.err = data.err;
                 
-                $http.get('/api/v1/slide/'+$scope.lesson.data.slides[$routeParams.seqno].id).
-                    success(function(data, status, headers, config) {
-                        $scope.slide = data;
-                        
-                        bsmWebAppControllers.updateLessonNav($scope, $routeParams.seqno);
-                    }).error(function(data, status, headers, config) {
-                        // handle error
-                    });
-                
-        
+                $scope.slide = data.data.slides[$routeParams.seqno];
+                bsmWebAppControllers.updateLessonNav($scope, $routeParams.seqno);
+
             }).error(function(data, status, headers, config) {
                 // handle error
             });
@@ -164,21 +151,14 @@ bsmWebAppControllers.controller('SlideNarrationCtrl', [
         Page.setStyle("slide");
         Page.setTitle("Sample Narration Slide");
         
-        var lesson = null;
         $http.get('/api/v1/lesson/'+$routeParams.lessonid).
             success(function(data, status, headers, config) {
-                $scope.lesson = data;
+                $scope.lesson = data.data;
+                $scope.err = data.err;
                 
-                $http.get('/api/v1/slide/'+$scope.lesson.data.slides[$routeParams.seqno].id).
-                    success(function(data, status, headers, config) {
-                        $scope.slide = data;
-                        
-                        bsmWebAppControllers.updateLessonNav($scope, $routeParams.seqno);
-                    }).error(function(data, status, headers, config) {
-                        // handle error
-                    });
-                
-        
+                $scope.slide = data.data.slides[$routeParams.seqno];
+                bsmWebAppControllers.updateLessonNav($scope, $routeParams.seqno);
+
             }).error(function(data, status, headers, config) {
                 // handle error
             });
