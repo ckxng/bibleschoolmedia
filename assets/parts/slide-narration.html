@@ -1,11 +1,7 @@
 <div class="slide-narration">
-    <img src="https://placehold.it/128?text=avatar+{{ id }}" />
+    <img src="{{ slide.data.data.narrator.avatarUrl }}" title="{{ slide.data.data.narrator.name }}" />
     
-    <p>Narration {{ id }}<br />
-    <br />
-    Narration<br />
-    <br />
-    Narration</p>
+    <p>{{ slide.data.data.text }}</p>
 </div>
 
 <div class="slide-page-nav">

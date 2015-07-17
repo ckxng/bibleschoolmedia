@@ -56,40 +56,54 @@ bsmWebAppControllers.controller('LessonListCtrl', [
 ]);
 
 bsmWebAppControllers.controller('SlideTitleCtrl', [
-    '$scope', '$routeParams', 'Page', 'SlideNav',
-    function ($scope, $routeParams, Page, SlideNav) {
+    '$scope', '$routeParams', '$http', 'Page', 'SlideNav',
+    function ($scope, $routeParams, $http, Page, SlideNav) {
         Page.setStyle("slide");
         Page.setTitle("Sample Title Slide");
+        $http.get('/api/v1/slide/'+$routeParams.id).
+            success(function(data, status, headers, config) {
+                $scope.slide = data;
+            }).error(function(data, status, headers, config) {
+                // handle error
+            });
         
         $scope.prev = "/#!/lesson/list";
-        $scope.next = "/#!/slide/narration/1";
-
-        $scope.id = $routeParams.id;
+        $scope.next = "/#!/slide/narration/2";
     }
 ]);
 
 bsmWebAppControllers.controller('SlideImageCtrl', [
-    '$scope', '$routeParams', 'Page', 'SlideNav',
-    function ($scope, $routeParams, Page, SlideNav) {
+    '$scope', '$routeParams', '$http', 'Page', 'SlideNav',
+    function ($scope, $routeParams, $http, Page, SlideNav) {
         Page.setStyle("slide");
         Page.setTitle("Sample Image Slide");
-        
-        $scope.prev = "/#!/slide/narration/1";
-        $scope.next = "/#!/lesson/list";
+        $http.get('/api/v1/slide/'+$routeParams.id).
+            success(function(data, status, headers, config) {
+                $scope.slide = data;
+            }).error(function(data, status, headers, config) {
+                // handle error
+            });
 
-        $scope.id = $routeParams.id;
+        
+        $scope.prev = "/#!/slide/narration/2";
+        $scope.next = "/#!/lesson/list";
     }
 ]);
 
 bsmWebAppControllers.controller('SlideNarrationCtrl', [
-    '$scope', '$routeParams', 'Page', 'SlideNav',
-    function ($scope, $routeParams, Page, SlideNav) {
+    '$scope', '$routeParams', '$http', 'Page', 'SlideNav',
+    function ($scope, $routeParams, $http, Page, SlideNav) {
         Page.setStyle("slide");
         Page.setTitle("Sample Narration Slide");
-        
-        $scope.prev = "/#!/slide/title/1";
-        $scope.next = "/#!/slide/image/1";
+        $http.get('/api/v1/slide/'+$routeParams.id).
+            success(function(data, status, headers, config) {
+                $scope.slide = data;
+            }).error(function(data, status, headers, config) {
+                // handle error
+            });
 
-        $scope.id = $routeParams.id;
+        
+        $scope.prev = "/#!/slide/title/0";
+        $scope.next = "/#!/slide/image/1";
     }
 ]);

@@ -7,6 +7,7 @@ import (
     "github.com/gorilla/mux"
     "github.com/codegangsta/negroni"
     "bsm/api/lesson"
+    "bsm/api/slide"
 )
 
 type JSONHandlerFunc func(http.ResponseWriter, *http.Request) (interface{}, error)
@@ -16,6 +17,7 @@ func Init() {
     router.HandleFunc("/hello", handler)
     router.HandleFunc("/api/v1/lesson", JSONDecorator(lesson.List))
     router.HandleFunc("/api/v1/lesson/{id:[0-9]+}", JSONDecorator(lesson.Retrieve))
+    router.HandleFunc("/api/v1/slide/{id:[0-9]+}", JSONDecorator(slide.Retrieve))
     // add controller routes
     router.PathPrefix("/").Handler(http.FileServer(http.Dir("./assets/")))
 

@@ -1,11 +1,10 @@
-package lesson
+package slide
 
 import (
     "github.com/gorilla/mux"
     "fmt"
     "net/http"
     "strconv"
-    "bsm/api/slide"
     "bsm/api/character"
 )
 
@@ -20,29 +19,36 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
         return nil, fmt.Errorf("Non-numeric ID: %s", id)
     }
     
-    return Lesson {
-        Id: int(iId),
-        Name: "Example Lesson",
-        Deck: slide.Slides {
-            slide.NewTitleSlide(
+    switch int(iId) {
+        case 0:
+            ts := NewTitleSlide(
                 "Title Slide", 
                 "Title Slide", 
                 "A slide with a title",
-            ),
-            slide.NewImageSlide(
+            )
+            ts.id = int(iId)
+            return ts, nil
+        case 1:
+            is := NewImageSlide(
                 "Image Slide",
                 "Image Slide",
                 "https://placehold.it/300?text=image",
                 "An image caption",
-            ),
-            slide.NewNarrationSlide(
+            )
+            is.id = int(iId)
+            return is, nil
+        case 2: 
+            ns := NewNarrationSlide(
                 "Narration Slide",
                 character.NewCharacter(
                     "Narrarator",
                     "https://placehold.it/64?text=narr",
                 ),
                 "Lorem ipsum dolor sit amet.",
-            ),
-        },
-    }, nil
+            )
+            ns.id = int(iId)
+            return ns, nil
+    }
+    
+    return nil, fmt.Errorf("Invalid slide")
 }
