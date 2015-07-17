@@ -9,11 +9,13 @@ import (
     "bsm/api/lesson"
 )
 
+type JSONHandlerFunc func(http.ResponseWriter, *http.Request) (interface{}, error)
+
 func Init() {
     router := mux.NewRouter().StrictSlash(false)
     router.HandleFunc("/hello", handler)
-    router.HandleFunc("/api/v1/lesson", JSONHandlerFunc(lesson.List()))
-    router.HandleFunc("/api/v1/lesson/1", JSONHandlerFunc(lesson.Retrieve(1)))
+    router.HandleFunc("/api/v1/lesson", JSONDecorator(lesson.List))
+    router.HandleFunc("/api/v1/lesson/{id:[0-9]+}", JSONDecorator(lesson.Retrieve))
     // add controller routes
     router.PathPrefix("/").Handler(http.FileServer(http.Dir("./assets/")))
 
@@ -24,16 +26,18 @@ func Init() {
     http.Handle("/", stack)
 }
 
-func JSONHandlerFunc(data interface{}) http.HandlerFunc {
+func JSONDecorator(handler JSONHandlerFunc) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
+        data, err := handler(w,r)
         payload := struct{
             Data    interface{}         `json:"data"`
-            Err     string              `json:"err"`
+            Err     error               `json:"err"`
         } {
             Data: data,
-            Err: "",
+            Err: err,
         }
         
+        w.Header().Set("Content-Type", "application/json")
         if bPayload, err := json.MarshalIndent(payload, "", "  "); err == nil {
             fmt.Fprint(w, string(bPayload))
         } else {

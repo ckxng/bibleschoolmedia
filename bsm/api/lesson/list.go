@@ -1,10 +1,11 @@
 package lesson
 
 import (
+    "net/http"
     "math/rand"
 )
 
-func List() LessonIndex {
+func List(w http.ResponseWriter, r *http.Request) (interface{}, error) {
     return LessonIndex {
         LessonListing {
             Id: rand.Int(),
@@ -26,5 +27,5 @@ func List() LessonIndex {
             Id: rand.Int(),
             Name: "Yet another randomly generated listing",
         },
-    }
+    }, nil
 }

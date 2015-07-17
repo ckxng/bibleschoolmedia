@@ -1,14 +1,27 @@
 package lesson
 
 import (
-    "math/rand"
+    "github.com/gorilla/mux"
+    "fmt"
+    "net/http"
+    "strconv"
     "bsm/api/slide"
     "bsm/api/character"
 )
 
-func Retrieve(id int) Lesson {
+func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
+    id, ok := mux.Vars(r)["id"]
+    if !ok || id == "" {
+        return Lesson{}, fmt.Errorf("Missing ID")
+    }
+    
+    iId, err := strconv.ParseInt(id,0,0)
+    if err != nil {
+        return Lesson{}, fmt.Errorf("Non-numeric ID: %s", id)
+    }
+    
     return Lesson {
-        Id: rand.Int(),
+        Id: int(iId),
         Name: "Example Lesson",
         Deck: slide.Slides {
             slide.NewTitleSlide(
@@ -31,5 +44,5 @@ func Retrieve(id int) Lesson {
                 "Lorem ipsum dolor sit amet.",
             ),
         },
-    }
+    }, nil
 }
