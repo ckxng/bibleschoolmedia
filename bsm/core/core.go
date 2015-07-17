@@ -31,18 +31,27 @@ func Init() {
 func JSONDecorator(handler JSONHandlerFunc) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
         data, err := handler(w,r)
+
         payload := struct{
             Data    interface{}         `json:"data"`
-            Err     error               `json:"err"`
+            Err     interface{}         `json:"err"`
         } {
             Data: data,
             Err: err,
         }
         
+        if err != nil {
+            payload.Err = err.Error()
+        }
+        
         w.Header().Set("Content-Type", "application/json")
-        if bPayload, err := json.MarshalIndent(payload, "", "  "); err == nil {
+        if bPayload, merr := json.MarshalIndent(payload, "", "  "); merr == nil {
+            if err != nil {
+                w.WriteHeader(500)
+            }
             fmt.Fprint(w, string(bPayload))
         } else {
+            w.WriteHeader(500)
             fmt.Fprintf(w, "{\"data\":\"\",\"err\":\"Marshal error: %s\"}", err)
         }
     }
