@@ -27,15 +27,15 @@ bsmWebApp.config(
                 templateUrl: 'parts/lesson-list.html',
                 controller: 'LessonListCtrl'
             }).
-            when('/slide/title/:id', {
+            when('/lesson/:lessonid/slide/:seqno/title', {
                 templateUrl: 'parts/slide-title.html',
                 controller: 'SlideTitleCtrl'
             }).
-            when('/slide/image/:id', {
+            when('/lesson/:lessonid/slide/:seqno/image', {
                 templateUrl: 'parts/slide-image.html',
                 controller: 'SlideImageCtrl'
             }).
-            when('/slide/narration/:id', {
+            when('/lesson/:lessonid/slide/:seqno/narration', {
                 templateUrl: 'parts/slide-narration.html',
                 controller: 'SlideNarrationCtrl'
             }).

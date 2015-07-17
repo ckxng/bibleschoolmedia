@@ -3,14 +3,13 @@ package slide
 import (
     "fmt"
     "encoding/json"
-    "math/rand"
     "bsm/api/character"
 )
 
-// create a new narration slide with a randomly set id
+// create a new narration slide with an id of 2
 func NewNarrationSlide(name string, narrator character.Character, text string) NarrationSlide {
     ns := NarrationSlide {
-        id: rand.Int(),
+        id: 2,
         name: name,
         myType: fmt.Sprintf("%T", NarrationSlide{}),
         data: make(map[string]interface{}),

@@ -3,13 +3,12 @@ package slide
 import (
     "fmt"
     "encoding/json"
-    "math/rand"
 )
 
-// create a new image slide with a randomly set id
+// create a new image slide with an id of 1
 func NewImageSlide(name string, title string, url string, caption string) ImageSlide {
     is := ImageSlide {
-        id: rand.Int(),
+        id: 1,
         name: name,
         myType: fmt.Sprintf("%T", ImageSlide{}),
         data: make(map[string]interface{}),

@@ -3,13 +3,12 @@ package slide
 import (
     "fmt"
     "encoding/json"
-    "math/rand"
 )
 
-// create a new title slide with a randomly generated id
+// create a new title slide with an id of 0
 func NewTitleSlide(name string, title string, subtitle string) TitleSlide {
     ts := TitleSlide {
-        id: rand.Int(),
+        id: 0,
         name: name,
         myType: fmt.Sprintf("%T", TitleSlide{}),
         data: make(map[string]interface{}),
