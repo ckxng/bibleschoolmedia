@@ -43,7 +43,6 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
     
     deck := slide.UntypedSlides{}
     err = json.Unmarshal([]byte(lesson.Deck), &deck)
-    
     if err != nil {
         return Lesson {
             Id: int(key.IntID()),
@@ -53,7 +52,15 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
     
     slides := make(slide.Slides, len(deck))
     for i:=0; i<len(deck); i++ {
-        slides[i] = deck[i]
+        if ts, err := deck[i].Upgrade(); err == nil {
+            slides[i] = ts
+        } else {
+            return Lesson {
+                Id: int(key.IntID()),
+                Name: lesson.Title,
+                Deck: slides,
+            }, fmt.Errorf("Failed to upgrade slide of type: %s", deck[i].Type())
+        }
     }
     
     return Lesson {
@@ -61,7 +68,6 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
         Name: lesson.Title,
         Deck: slides,
     }, nil
-    
     
     return Lesson {
         Id: int(iId),
