@@ -28,22 +28,22 @@ type ImageSlide struct {
 }
 
 // get the Id
-func (is *ImageSlide) Id() int {
+func (is ImageSlide) Id() int {
     return is.id
 }
  
 // get the Name
-func (is *ImageSlide) Name() string {
+func (is ImageSlide) Name() string {
     return is.name
 }
 
 // get the Type
-func (is *ImageSlide) Type() string {
+func (is ImageSlide) Type() string {
     return is.myType
 }
 
 // get the Title
-func (is *ImageSlide) Title() (string, bool) {
+func (is ImageSlide) Title() (string, bool) {
     if val, ok := is.data["title"]; ok {
         if title, ok := val.(string); ok {
             return title, true
@@ -53,7 +53,7 @@ func (is *ImageSlide) Title() (string, bool) {
 }
 
 // get the Url to the image
-func (is *ImageSlide) Url() (string, bool) {
+func (is ImageSlide) Url() (string, bool) {
     if val, ok := is.data["url"]; ok {
         if url, ok := val.(string); ok {
             return url, true
@@ -63,7 +63,7 @@ func (is *ImageSlide) Url() (string, bool) {
 }
 
 // get the Caption
-func (is *ImageSlide) Caption() (string, bool) {
+func (is ImageSlide) Caption() (string, bool) {
     if val, ok := is.data["caption"]; ok {
         if caption, ok := val.(string); ok {
             return caption, true
@@ -74,7 +74,7 @@ func (is *ImageSlide) Caption() (string, bool) {
 
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{} {title:string, url:string, caption:string}} 
-func (is *ImageSlide) MarshalJSON() ([]byte, error) {
+func (is ImageSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
         Id          int                         `json:"id"`
         Name        string                      `json:"name"`

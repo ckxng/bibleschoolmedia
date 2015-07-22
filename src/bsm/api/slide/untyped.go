@@ -17,24 +17,24 @@ type UntypedSlides []UntypedSlide
 
 
 // get the Id
-func (us *UntypedSlide) Id() int {
+func (us UntypedSlide) Id() int {
     return us.id
 }
  
 // get the Name
-func (us *UntypedSlide) Name() string {
+func (us UntypedSlide) Name() string {
     fmt.Printf("my name is: %s\n", us.name)
     return us.name
 }
 
 // get the Type
-func (us *UntypedSlide) Type() string {
+func (us UntypedSlide) Type() string {
     return us.myType
 }
 
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{}} 
-func (us *UntypedSlide) MarshalJSON() ([]byte, error) {
+func (us UntypedSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
         Id          int                         `json:"id"`
         Name        string                      `json:"name"`
@@ -72,7 +72,7 @@ func (us *UntypedSlide) UnmarshalJSON(data []byte) error {
 
 // upgrades UntypedSlide to a more full-featured type that impliments the 
 // Slide interface
-func (us *UntypedSlide) Upgrade() (Slide, error) {
+func (us UntypedSlide) Upgrade() (Slide, error) {
     switch us.Type() {
         case "slide.ImageSlide":
             return ImageSlide {

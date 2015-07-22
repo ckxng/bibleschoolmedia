@@ -27,22 +27,22 @@ type TitleSlide struct {
 }
 
 // get the Id
-func (ts *TitleSlide) Id() int {
+func (ts TitleSlide) Id() int {
     return ts.id
 }
 
 // get the Name
-func (ts *TitleSlide) Name() string {
+func (ts TitleSlide) Name() string {
     return ts.name
 }
 
 // get the Type
-func (ts *TitleSlide) Type() string {
+func (ts TitleSlide) Type() string {
     return ts.myType
 }
 
 // get the Title
-func (ts *TitleSlide) Title() (string, bool) {
+func (ts TitleSlide) Title() (string, bool) {
     if val, ok := ts.data["title"]; ok {
         if title, ok := val.(string); ok {
             return title, true
@@ -52,7 +52,7 @@ func (ts *TitleSlide) Title() (string, bool) {
 }
 
 // get the Subtitle
-func (ts *TitleSlide) Subtitle() (string, bool) {
+func (ts TitleSlide) Subtitle() (string, bool) {
     if val, ok := ts.data["subtitle"]; ok {
         if subtitle, ok := val.(string); ok {
             return subtitle, true
@@ -63,7 +63,7 @@ func (ts *TitleSlide) Subtitle() (string, bool) {
 
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{} {title:string, subtitle:string}} 
-func (ts *TitleSlide) MarshalJSON() ([]byte, error) {
+func (ts TitleSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
         Id          int                         `json:"id"`
         Name        string                      `json:"name"`
