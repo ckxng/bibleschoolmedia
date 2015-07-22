@@ -14,6 +14,14 @@ type LessonListing struct {
 
 type LessonIndex []LessonListing
 
+// the data type stored by Google Datastore
+type DatastoreLesson struct {
+    ID      string
+    Title   string
+    Deck    string
+    Active  bool
+}
+
 // a fully specified lesson including the slide deck
 type Lesson struct {
     Id      int             `json:"id"`
