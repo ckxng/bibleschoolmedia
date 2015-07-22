@@ -6,7 +6,6 @@ import (
     "net/http"
     "strconv"
     "bsm/api/slide"
-    "bsm/api/character"
     "appengine"
     "appengine/datastore"
     "encoding/json"
