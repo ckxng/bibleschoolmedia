@@ -25,22 +25,22 @@ type Character struct {
 }
 
 // gets the Id
-func (c Character) Id() int {
+func (c *Character) Id() int {
     return c.id
 }
 
 // gets the Name
-func (c Character) Name() string {
+func (c *Character) Name() string {
     return c.name
 }
 
 // gets the Avatar URL
-func (c Character) AvatarUrl() string {
+func (c *Character) AvatarUrl() string {
     return c.avatarUrl
 }
 
 // JSON marshals to {id:int, name:string, avatarURL:string}
-func (c Character) MarshalJSON() ([]byte, error) {
+func (c *Character) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
         Id          int                         `json:"id"`
         Name        string                      `json:"name"`
