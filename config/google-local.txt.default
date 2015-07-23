@@ -1,4 +1,4 @@
-# Copy this file to google-deploy.txt and make changes below.
+# Copy this file to google-local.txt and make changes below.
 
 HOST="0.0.0.0"
 PORT="8080"
