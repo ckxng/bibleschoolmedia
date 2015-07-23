@@ -76,3 +76,25 @@ func (ts TitleSlide) MarshalJSON() ([]byte, error) {
         Data:       ts.data,
     })
 }
+
+// json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 
+// data:map[string]interface{}} 
+func (ts *TitleSlide) UnmarshalJSON(data []byte) error {
+    um := struct{
+        Id          int                         `json:"id"`
+        Name        string                      `json:"name"`
+        MyType      string                      `json:"myType"`
+        Data        map[string]interface{}      `json:"data"`
+    }{}
+    err := json.Unmarshal(data, &um)
+    if err != nil {
+        return fmt.Errorf("Unable to unmarshal data: %s", err)
+    }
+    
+    ts.id = um.Id
+    ts.name = um.Name
+    ts.myType = um.MyType
+    ts.data = um.Data
+    
+    return nil
+}
