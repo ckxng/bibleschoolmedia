@@ -19,7 +19,7 @@ func NewTitleSlide(name string, title string, subtitle string) TitleSlide {
 }
 
 type TitleSlide struct {
-    id          int                         `json:"id"`
+    id          int64                       `json:"id"`
     name        string                      `json:"name"`
     myType      string                      `json:"myType"`
     data        map[string]interface{}      `json:"data"`
@@ -27,7 +27,7 @@ type TitleSlide struct {
 }
 
 // get the Id
-func (ts TitleSlide) Id() int {
+func (ts TitleSlide) Id() int64 {
     return ts.id
 }
 
@@ -65,7 +65,7 @@ func (ts TitleSlide) Subtitle() (string, bool) {
 // data:map[string]interface{} {title:string, subtitle:string}} 
 func (ts TitleSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
-        Id          int                         `json:"id"`
+        Id          int64                      `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`
@@ -81,7 +81,7 @@ func (ts TitleSlide) MarshalJSON() ([]byte, error) {
 // data:map[string]interface{}} 
 func (ts *TitleSlide) UnmarshalJSON(data []byte) error {
     um := struct{
-        Id          int                         `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`

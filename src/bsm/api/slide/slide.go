@@ -12,7 +12,7 @@ package slide
 // {id:int, name:string, myType:fmt.Sprintf("%T"), data:map[string]interface{}}
 // for maximum compatibility.
 type Slide interface {
-    Id()            int
+    Id()            int64
     Name()          string
     Type()          string
 }

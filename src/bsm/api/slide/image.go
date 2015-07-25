@@ -21,14 +21,14 @@ func NewImageSlide(name string, title string, url string, caption string) ImageS
 
 // a Slide type that holds a URL to a title, a URL to an image, and a caption.
 type ImageSlide struct {
-    id          int                         `json:"id"`
+    id          int64                       `json:"id"`
     name        string                      `json:"name"`
     myType      string                      `json:"myType"`
     data        map[string]interface{}      `json:"data"`
 }
 
 // get the Id
-func (is ImageSlide) Id() int {
+func (is ImageSlide) Id() int64 {
     return is.id
 }
  
@@ -76,7 +76,7 @@ func (is ImageSlide) Caption() (string, bool) {
 // data:map[string]interface{} {title:string, url:string, caption:string}} 
 func (is ImageSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
-        Id          int                         `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`
@@ -92,7 +92,7 @@ func (is ImageSlide) MarshalJSON() ([]byte, error) {
 // data:map[string]interface{}} 
 func (is *ImageSlide) UnmarshalJSON(data []byte) error {
     um := struct{
-        Id          int                         `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`

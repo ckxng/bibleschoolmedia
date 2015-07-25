@@ -8,7 +8,7 @@ import (
 
 // a simple listing of lessons consisting only of an Id and Name
 type LessonListing struct {
-    Id      int     `json:"id"`
+    Id      int64   `json:"id"`
     Name    string  `json:"name"`
 }
 
@@ -24,7 +24,7 @@ type DatastoreLesson struct {
 
 // a fully specified lesson including the slide deck
 type Lesson struct {
-    Id      int             `json:"id"`
+    Id      int64           `json:"id"`
     Name    string          `json:"name"`
     Deck    slide.Slides    `json:"slides"`
 }

@@ -19,14 +19,14 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
         return nil, fmt.Errorf("Non-numeric ID: %s", id)
     }
     
-    switch int(iId) {
+    switch int64(iId) {
         case 0:
             ts := NewTitleSlide(
                 "Title Slide", 
                 "Title Slide", 
                 "A slide with a title",
             )
-            ts.id = int(iId)
+            ts.id = int64(iId)
             return ts, nil
         case 1:
             is := NewImageSlide(
@@ -35,7 +35,7 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
                 "https://placehold.it/300?text=image",
                 "An image caption",
             )
-            is.id = int(iId)
+            is.id = int64(iId)
             return is, nil
         case 2: 
             ns := NewNarrationSlide(
@@ -46,7 +46,7 @@ func Retrieve(w http.ResponseWriter, r *http.Request) (interface{}, error) {
                 ),
                 "Lorem ipsum dolor sit amet.",
             )
-            ns.id = int(iId)
+            ns.id = int64(iId)
             return ns, nil
     }
     

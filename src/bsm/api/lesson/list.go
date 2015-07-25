@@ -25,7 +25,7 @@ func List(w http.ResponseWriter, r *http.Request) (interface{}, error) {
     index := make(LessonIndex, len(lessons))
     for i:=0; i<len(lessons); i++ {
         index[i] = LessonListing {
-            Id: int(keys[i].IntID()),
+            Id: keys[i].IntID(),
             Name: lessons[i].Title,
         }
     }

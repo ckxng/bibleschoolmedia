@@ -20,14 +20,14 @@ func NewNarrationSlide(name string, narrator character.Character, text string) N
 }
 
 type NarrationSlide struct {
-    id          int                         `json:"id"`
+    id          int64                       `json:"id"`
     name        string                      `json:"name"`
     myType      string                      `json:"myType"`
     data        map[string]interface{}      `json:"data"`
 }
 
 // get the Id
-func (ns NarrationSlide) Id() int {
+func (ns NarrationSlide) Id() int64 {
     return ns.id
 }
  
@@ -66,7 +66,7 @@ func (ns NarrationSlide) Text() (string, bool) {
 // text:string}} 
 func (ns NarrationSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
-        Id          int                         `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`
@@ -82,7 +82,7 @@ func (ns NarrationSlide) MarshalJSON() ([]byte, error) {
 // data:map[string]interface{}} 
 func (ns *NarrationSlide) UnmarshalJSON(data []byte) error {
     um := struct{
-        Id          int                         `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`

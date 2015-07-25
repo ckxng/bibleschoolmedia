@@ -7,7 +7,7 @@ import (
 
 // a struct for simply passing slide data
 type UntypedSlide struct {
-    id          int                         `json:"id"`
+    id          int64                       `json:"id"`
     name        string                      `json:"name"`
     myType      string                      `json:"myType"`
     data        map[string]interface{}      `json:"data"`
@@ -17,7 +17,7 @@ type UntypedSlides []UntypedSlide
 
 
 // get the Id
-func (us UntypedSlide) Id() int {
+func (us UntypedSlide) Id() int64 {
     return us.id
 }
  
@@ -36,7 +36,7 @@ func (us UntypedSlide) Type() string {
 // data:map[string]interface{}} 
 func (us UntypedSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
-        Id          int                         `json:"id"`
+        Id          int64                         `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`
@@ -52,7 +52,7 @@ func (us UntypedSlide) MarshalJSON() ([]byte, error) {
 // data:map[string]interface{}} 
 func (us *UntypedSlide) UnmarshalJSON(data []byte) error {
     um := struct{
-        Id          int                         `json:"id"`
+        Id          int64                         `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`
