@@ -43,29 +43,19 @@ func (ts TitleSlide) Type() string {
 
 // get the Title
 func (ts TitleSlide) Title() (string, bool) {
-    if val, ok := ts.data["title"]; ok {
-        if title, ok := val.(string); ok {
-            return title, true
-        }
-    }
-    return "", false
+    return getMappedString(ts.data, "title")
 }
 
 // get the Subtitle
 func (ts TitleSlide) Subtitle() (string, bool) {
-    if val, ok := ts.data["subtitle"]; ok {
-        if subtitle, ok := val.(string); ok {
-            return subtitle, true
-        }
-    }
-    return "", false
+    return getMappedString(ts.data, "subtitle")
 }
 
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{} {title:string, subtitle:string}} 
 func (ts TitleSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
-        Id          int64                      `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`

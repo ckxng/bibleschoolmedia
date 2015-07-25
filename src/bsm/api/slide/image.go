@@ -44,32 +44,17 @@ func (is ImageSlide) Type() string {
 
 // get the Title
 func (is ImageSlide) Title() (string, bool) {
-    if val, ok := is.data["title"]; ok {
-        if title, ok := val.(string); ok {
-            return title, true
-        }
-    }
-    return "", false
+    return getMappedString(is.data, "title")
 }
 
 // get the Url to the image
 func (is ImageSlide) Url() (string, bool) {
-    if val, ok := is.data["url"]; ok {
-        if url, ok := val.(string); ok {
-            return url, true
-        }
-    }
-    return "", false
+    return getMappedString(is.data, "url")
 }
 
 // get the Caption
 func (is ImageSlide) Caption() (string, bool) {
-    if val, ok := is.data["caption"]; ok {
-        if caption, ok := val.(string); ok {
-            return caption, true
-        }
-    }
-    return "", false
+    return getMappedString(is.data, "caption")
 }
 
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 

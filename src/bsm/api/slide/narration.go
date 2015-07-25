@@ -43,22 +43,12 @@ func (ns NarrationSlide) Type() string {
 
 // get the Narrator
 func (ns NarrationSlide) Narrarator() (character.Character, bool) {
-    if val, ok := ns.data["narrator"]; ok {
-        if narrator, ok := val.(character.Character); ok {
-            return narrator, true
-        }
-    }
-    return character.Character{}, false
+    return getMappedCharacter(ns.data, "narrator")
 }
 
 // get the Text
 func (ns NarrationSlide) Text() (string, bool) {
-    if val, ok := ns.data["text"]; ok {
-        if text, ok := val.(string); ok {
-            return text, true
-        }
-    }
-    return "", false
+    return getMappedString(ns.data, "text")
 }
 
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 

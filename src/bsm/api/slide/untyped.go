@@ -36,7 +36,7 @@ func (us UntypedSlide) Type() string {
 // data:map[string]interface{}} 
 func (us UntypedSlide) MarshalJSON() ([]byte, error) {
     return json.Marshal(struct{
-        Id          int64                         `json:"id"`
+        Id          int64                       `json:"id"`
         Name        string                      `json:"name"`
         MyType      string                      `json:"myType"`
         Data        map[string]interface{}      `json:"data"`
