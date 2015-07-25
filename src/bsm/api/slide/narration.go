@@ -55,17 +55,7 @@ func (ns NarrationSlide) Text() (string, bool) {
 // data:map[string]interface{} {narrator:bsm.api.character.Character, 
 // text:string}} 
 func (ns NarrationSlide) MarshalJSON() ([]byte, error) {
-    return json.Marshal(struct{
-        Id          int64                       `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{
-        Id:         ns.id,
-        Name:       ns.name,
-        MyType:     ns.myType,
-        Data:       ns.data,
-    })
+    return marshalSlideJSON(ns.id, ns.name, ns.myType, ns.data)
 }
 
 // json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 

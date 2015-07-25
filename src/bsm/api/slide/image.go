@@ -60,17 +60,7 @@ func (is ImageSlide) Caption() (string, bool) {
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{} {title:string, url:string, caption:string}} 
 func (is ImageSlide) MarshalJSON() ([]byte, error) {
-    return json.Marshal(struct{
-        Id          int64                       `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{
-        Id:         is.id,
-        Name:       is.name,
-        MyType:     is.myType,
-        Data:       is.data,
-    })
+    return marshalSlideJSON(is.id, is.name, is.myType, is.data)
 }
 
 // json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 

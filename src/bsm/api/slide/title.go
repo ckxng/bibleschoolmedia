@@ -54,17 +54,7 @@ func (ts TitleSlide) Subtitle() (string, bool) {
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{} {title:string, subtitle:string}} 
 func (ts TitleSlide) MarshalJSON() ([]byte, error) {
-    return json.Marshal(struct{
-        Id          int64                       `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{
-        Id:         ts.id,
-        Name:       ts.name,
-        MyType:     ts.myType,
-        Data:       ts.data,
-    })
+    return marshalSlideJSON(ts.id, ts.name, ts.myType, ts.data)
 }
 
 // json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 
