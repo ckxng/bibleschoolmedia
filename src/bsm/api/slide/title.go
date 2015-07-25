@@ -2,7 +2,6 @@ package slide
 
 import (
     "fmt"
-    "encoding/json"
 )
 
 // create a new title slide with an id of 0
@@ -60,21 +59,7 @@ func (ts TitleSlide) MarshalJSON() ([]byte, error) {
 // json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{}} 
 func (ts *TitleSlide) UnmarshalJSON(data []byte) error {
-    um := struct{
-        Id          int64                       `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{}
-    err := json.Unmarshal(data, &um)
-    if err != nil {
-        return fmt.Errorf("Unable to unmarshal data: %s", err)
-    }
-    
-    ts.id = um.Id
-    ts.name = um.Name
-    ts.myType = um.MyType
-    ts.data = um.Data
-    
-    return nil
+    var err error
+    ts.id, ts.name, ts.myType, ts.data, err = unmarshalSlideJSON(data)
+    return err
 }

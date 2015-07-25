@@ -2,7 +2,6 @@ package slide
 
 import (
     "fmt"
-    "encoding/json"
     "bsm/api/character"
 )
 
@@ -61,21 +60,7 @@ func (ns NarrationSlide) MarshalJSON() ([]byte, error) {
 // json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{}} 
 func (ns *NarrationSlide) UnmarshalJSON(data []byte) error {
-    um := struct{
-        Id          int64                       `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{}
-    err := json.Unmarshal(data, &um)
-    if err != nil {
-        return fmt.Errorf("Unable to unmarshal data: %s", err)
-    }
-    
-    ns.id = um.Id
-    ns.name = um.Name
-    ns.myType = um.MyType
-    ns.data = um.Data
-    
-    return nil
+    var err error
+    ns.id, ns.name, ns.myType, ns.data, err = unmarshalSlideJSON(data)
+    return err
 }
