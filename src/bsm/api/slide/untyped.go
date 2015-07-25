@@ -2,7 +2,6 @@ package slide
 
 import (
     "fmt"
-    "encoding/json"
 )
 
 // a struct for simply passing slide data
@@ -35,39 +34,15 @@ func (us UntypedSlide) Type() string {
 // json.Marshal to {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{}} 
 func (us UntypedSlide) MarshalJSON() ([]byte, error) {
-    return json.Marshal(struct{
-        Id          int64                       `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{
-        Id:         us.id,
-        Name:       us.name,
-        MyType:     us.myType,
-        Data:       us.data,
-    })
+    return marshalSlideJSON(us.id, us.name, us.myType, us.data)
 }
 
 // json.Unmarshal from {id:int, name:string, myType:fmt.Sprintf("%T"), 
 // data:map[string]interface{}} 
 func (us *UntypedSlide) UnmarshalJSON(data []byte) error {
-    um := struct{
-        Id          int64                         `json:"id"`
-        Name        string                      `json:"name"`
-        MyType      string                      `json:"myType"`
-        Data        map[string]interface{}      `json:"data"`
-    }{}
-    err := json.Unmarshal(data, &um)
-    if err != nil {
-        return fmt.Errorf("Unable to unmarshal data: %s", err)
-    }
-    
-    us.id = um.Id
-    us.name = um.Name
-    us.myType = um.MyType
-    us.data = um.Data
-    
-    return nil
+    var err error
+    us.id, us.name, us.myType, us.data, err = unmarshalSlideJSON(data)
+    return err
 }
 
 // upgrades UntypedSlide to a more full-featured type that impliments the 
