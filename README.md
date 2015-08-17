@@ -10,3 +10,8 @@ children Bible stories in-person with the assistance of multimedia.
 This project is somewhat functional and is capable of hosting lessons using 
 Google AppEngine.  A number of improvements are needed before this software 
 is ready for prime-time.  See this issues list for details.
+
+## Copying
+
+BibleSchool.Media is released under the 2-CLAUSE BSD LICENSE.  See
+LICENSE for details.
